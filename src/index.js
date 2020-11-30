@@ -84,6 +84,7 @@ import './index.css';
       const history = this.state.history;
       const locationHistory = this.state.locationHistory;
       const current = history[this.state.stepNumber];
+      const stepNumber = this.state.stepNumber;
       const winner = calculateWinner(current.squares);
 
       const moves = history.map((step,move)=> {
@@ -92,11 +93,19 @@ import './index.css';
         const desc = move ?
           `Go to move #${move} (${row} ,${col})` :
           'Go to game start';
-        return (
-          <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
-          </li>
-        );
+        if(move === stepNumber) {
+          return (
+            <li key={move}>
+              <button onClick={() => this.jumpTo(move)}><b>{desc}</b></button>
+            </li>
+          );
+        } else {
+          return (
+            <li key={move}>
+              <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            </li>
+          );
+        }
       });
       let status;
       if(winner) {
