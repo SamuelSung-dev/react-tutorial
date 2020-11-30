@@ -50,22 +50,26 @@ import './index.css';
         history: [{
           squares: Array(9).fill(null),
         }],
+        locationHistory: Array(9).fill(null),
         stepNumber: 0,
         xIsNext: true,
       };
     }
     handleClick(i) {
       const history = this.state.history.slice(0,this.state.stepNumber + 1);
+      const locationHistory = this.state.locationHistory.slice();
       const current = history[history.length-1];
       const squares = current.squares.slice();
       if(calculateWinner(squares) || squares[i]) {
         return;
       }
       squares[i] = this.state.xIsNext ? 'X' : 'O';
+      locationHistory[history.length-1] = i;
       this.setState({
         history: history.concat([{
           squares: squares,
         }]),
+        locationHistory : locationHistory,
         stepNumber: history.length,
         xIsNext: !this.state.xIsNext,
       });
@@ -78,12 +82,15 @@ import './index.css';
     }
     render() {
       const history = this.state.history;
+      const locationHistory = this.state.locationHistory;
       const current = history[this.state.stepNumber];
       const winner = calculateWinner(current.squares);
 
       const moves = history.map((step,move)=> {
+        const row = Math.trunc(locationHistory[move-1]/3) + 1;
+        const col = Math.trunc(locationHistory[move-1]%3) + 1;
         const desc = move ?
-          'Go to move #' + move :
+          `Go to move #${move} (${row} ,${col})` :
           'Go to game start';
         return (
           <li key={move}>
