@@ -1,3 +1,8 @@
+# react-tutorial
+
+This project is my walkthrough about [ReactJS Tutorial](https://reactjs.org/tutorial/tutorial.html)
+이 프로젝트는 [ReactJS의 튜토리얼](https://reactjs.org/tutorial/tutorial.html)을 따라하였습니다.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,5 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# react-tutorial
-# react-tutorial
+
+
+# Copyright
+copyright : Facebook Open Source.
